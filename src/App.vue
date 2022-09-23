@@ -47,9 +47,17 @@ export default {
             return this.todoList.filter(i => i.task.toLowerCase().includes(this.searchTerm))
           }
         case 'done':
+          if(!this.searchTerm) {
           return this.todoList.filter(i => i.done)
+          }else{
+            return this.todoList.filter(i => i.done).filter(i => i.task.toLowerCase().includes(this.searchTerm))
+          }
         case 'undone':
-          return this.todoList.filter(i => !i.done)
+          if(!this.searchTerm) {
+            return this.todoList.filter(i => !i.done)
+          }else{
+            return this.todoList.filter(i => !i.done).filter(i => i.task.toLowerCase().includes(this.searchTerm))
+          }
       }
     }
   }
